@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payware Hub | Mods para ETS2 & ATS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* bg-slate-900 */
+            color: #e2e8f0; /* text-slate-200 */
+        }
+        .background-wallpaper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('https://images.unsplash.com/photo-1588448229417-4395595a4a84?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(8px) brightness(0.4);
+            transform: scale(1.1);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .active-filter {
+            background-color: #f97316 !important; /* orange-500 */
+            color: #ffffff !important;
+            border-color: #f97316 !important;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
+        }
+        .acrylic-card {
+            background: rgba(15, 23, 42, 0.7); /* bg-slate-900 com opacidade */
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(51, 65, 85, 0.5); /* border-slate-700 com opacidade */
+            transition: all 0.3s ease;
+        }
+        .acrylic-card:hover {
+            border-color: rgba(249, 115, 22, 0.6);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+        }
+        .accordion-button-style {
+            background-color: #1e293b; /* bg-slate-800 */
+        }
+        .accordion-button-style:hover {
+            background-color: #334155; /* bg-slate-700 */
+        }
+        .accordion-content-style {
+            background-color: #1e293b; /* bg-slate-800 */
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(249, 115, 22, 0.7);
+        }
+    </style>
+</head>
+<body class="text-slate-200">
+    <div class="background-wallpaper"></div>
+
+    <header class="bg-slate-900/70 backdrop-blur-lg shadow-lg shadow-black/20 sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-extrabold text-white">
+                <span class="text-orange-500">Payware</span><span class="text-slate-400">Hub</span>
+            </h1>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#diretorio" class="font-medium text-slate-300 hover:text-orange-500 transition-colors duration-300">Diretório</a>
+                <a href="#analise" class="font-medium text-slate-300 hover:text-orange-500 transition-colors duration-300">Análise</a>
+                <a href="#guia" class="font-medium text-slate-300 hover:text-orange-500 transition-colors duration-300">Guia</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-slate-900/90">
+            <a href="#diretorio" class="block py-2 text-slate-300 hover:text-orange-500">Diretório</a>
+            <a href="#analise" class="block py-2 text-slate-300 hover:text-orange-500">Análise</a>
+            <a href="#guia" class="block py-2 text-slate-300 hover:text-orange-500">Guia</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 relative z-10">
+        
+        <section id="home" class="text-center my-16 md:my-24">
+            <h2 class="text-5xl md:text-7xl font-extrabold text-white mb-4">
+                O Universo de Mods <span class="text-orange-500 text-glow">Premium</span>
+            </h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-400">
+                Seu portal definitivo para mods pagos de ETS2 & ATS. Navegue, descubra e conecte-se com os criadores de conteúdo mais renomados da comunidade.
+            </p>
+        </section>
+
+        <section id="diretorio" class="mb-24">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-white mb-2">Diretório Interativo de Mods</h3>
+                <p class="text-slate-400">Filtre para encontrar exatamente o que você procura.</p>
+            </div>
+
+            <div id="filters" class="space-y-6 mb-10 p-6 acrylic-card rounded-lg">
+                <div>
+                    <h4 class="font-semibold mb-3 text-white">Região:</h4>
+                    <div class="flex flex-wrap gap-3" data-filter-group="region">
+                        <button data-filter="*" class="filter-btn active-filter">Todos</button>
+                        <button data-filter="Internacional" class="filter-btn">Internacional</button>
+                        <button data-filter="Brasil" class="filter-btn">Brasil</button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3 text-white">Especialidade:</h4>
+                    <div class="flex flex-wrap gap-3" data-filter-group="specialty">
+                        <button data-filter="*" class="filter-btn active-filter">Todas</button>
+                        <button data-filter="Camiões" class="filter-btn">Camiões</button>
+                        <button data-filter="Reboques" class="filter-btn">Reboques</button>
+                        <button data-filter="Autocarros" class="filter-btn">Autocarros</button>
+                        <button data-filter="Mapas" class="filter-btn">Mapas</button>
+                        <button data-filter="Som" class="filter-btn">Som</button>
+                        <button data-filter="Acessórios" class="filter-btn">Acessórios</button>
+                    </div>
+                </div>
+                 <div class="text-right text-sm text-slate-400">
+                    <p>Preços em Euro: $ &lt; 15 | $$ = 15-40 | $$$ &gt; 40</p>
+                </div>
+            </div>
+
+            <div id="mod-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            </div>
+        </section>
+
+        <section id="analise" class="mb-24">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-white mb-2">Análise do Mercado</h3>
+                <p class="text-slate-400">Uma visão geral do ecossistema de mods pagos.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="p-6 acrylic-card rounded-lg">
+                    <h4 class="text-xl font-semibold text-center mb-4 text-white">Distribuição por Especialidade</h4>
+                    <div class="chart-container">
+                        <canvas id="specialtyChart"></canvas>
+                    </div>
+                </div>
+                <div class="p-6 acrylic-card rounded-lg">
+                    <h4 class="text-xl font-semibold text-center mb-4 text-white">Distribuição por Plataforma</h4>
+                    <div class="chart-container">
+                        <canvas id="platformChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="guia">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-white mb-2">Guia do Consumidor Consciente</h3>
+                <p class="text-slate-400">Compre com segurança e evite problemas.</p>
+            </div>
+            <div id="accordion-container" class="max-w-4xl mx-auto space-y-4">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900/50 mt-20 border-t border-slate-800">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500">
+            <p>&copy; 2025 Payware Hub. Uma aplicação interativa baseada na análise do ecossistema de mods.</p>
+            <p class="text-sm mt-2">Este é um projeto não oficial e não afiliado à SCS Software.</p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const modders = [
+        { name: 'Jon Ruda', url: 'https://byjonruda.com/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$$', region: 'Internacional', note: 'Reputação de topo; foco em modelos americanos (ATS) e europeus (ETS2) de alta fidelidade.' },
+        { name: 'RTA-Mods', url: 'https://rta-mods.net/', specialty: ['Camiões'], platform: 'Loja Própria', price: '$$$', region: 'Internacional', note: 'Muito conceituado; foco em camiões australianos e americanos para ATS/ETS2.' },
+        { name: 'PingaMods', url: 'https://pingamods.com/', specialty: ['Reboques'], platform: 'Loja Própria', price: '$$', region: 'Internacional', note: 'Excelente qualidade; muitos reboques gratuitos e pagos para ETS2.' },
+        { name: 'Sanax', url: 'https://sanax.gumroad.com/', specialty: ['Camiões'], platform: 'Gumroad', price: '$$', region: 'Internacional', note: 'Famoso pelo aclamado mod Volvo FH 2022 para ETS2.' },
+        { name: 'Virtual Service', url: 'https://virtualservice.gumroad.com/', specialty: ['Camiões', 'Reboques', 'Acessórios'], platform: 'Gumroad', price: '$$$', region: 'Internacional', note: 'Loja muito prolífica com um vasto catálogo de produtos para ETS2.' },
+        { name: 'ProMods', url: 'https://www.promods.net/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$', region: 'Internacional', note: 'Essencial. Expansão massiva para ETS2 e ATS. Doação de ~1€ para download rápido.' },
+        { name: 'RoExtended', url: 'https://roextended.ro/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Internacional', note: 'Foco na Roménia e Leste Europeu para ETS2. Modelo com versão gratuita e premium.' },
+        { name: 'Zeemods', url: 'https://zeemods.com/', specialty: ['Som'], platform: 'Loja Própria', price: '$', region: 'Internacional', note: 'Considerado o melhor para sons de motor para ETS2/ATS. Oferece o ZAF para imersão extra.' },
+        { name: 'Max2712 Sound Design', url: 'https://max2712.gumroad.com/', specialty: ['Som'], platform: 'Gumroad', price: '$', region: 'Internacional', note: 'Alternativa de alta qualidade à Zeemods, com preços acessíveis para ETS2.' },
+        { name: 'Jasper\'s Modding', url: 'https://jaspermodding.com/', specialty: ['Acessórios'], platform: 'Sellfy', price: '$', region: 'Internacional', note: 'Conhecido pelo seu "Wheels Pack" de alta qualidade para ETS2.' },
+        { name: 'L.W.J Modding', url: 'https://lwjcod.gumroad.com/', specialty: ['Acessórios'], platform: 'Gumroad', price: '$', region: 'Internacional', note: 'Especializado em peças de tuning para camiões Scania RJL no ETS2.' },
+        { name: 'KJDesign', url: 'https://kjdesign.gumroad.com/', specialty: ['Acessórios'], platform: 'Gumroad', price: '$', region: 'Internacional', note: 'Foco em iluminação (barras de LED, lightboxes) e bullbars para ETS2.' },
+        { name: 'Frank Peru', url: 'https://www.facebook.com/FrankPeru.Oficial/', specialty: ['Camiões'], platform: 'Venda Direta', price: '$$', region: 'Internacional', note: 'Modder respeitado, conhecido por seus camiões Kenworth e Peterbilt para ETS2 e ATS.' },
+        { name: 'Sisl\'s Mega Pack', url: 'https://www.patreon.com/sisl', specialty: ['Acessórios'], platform: 'Patreon / Workshop', price: '$', region: 'Internacional', note: 'O pacote de acessórios de cabine mais essencial. O Patreon oferece mais conteúdo.' },
+        { name: 'Modwork', url: 'https://www.modwork.com.br/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Vasta seleção de camiões brasileiros icónicos para ETS2.' },
+        { name: 'Shop Pisc', url: 'https://shoppisc.com.br/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Oferece combos com desconto e mods com funcionalidades imersivas para ETS2.' },
+        { name: 'ModShop', url: 'https://modshop.com.br/', specialty: ['Autocarros'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Principal destino para mods de autocarros brasileiros (Marcopolo, etc.) para ETS2.' },
+        { name: 'Fabio Contier', url: 'https://fabiocontier.com.br/', specialty: ['Autocarros'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Modder individual de renome, especializado em autocarros de alta qualidade para ETS2.' },
+        { name: 'SouzaSG', url: 'https://souzasg.com.br/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Mods de alta qualidade para ETS2 e ATS, com foco em veículos brasileiros como o VW Meteor.' },
+        { name: 'Quality3D', url: 'https://quality3d.com.br/', specialty: ['Autocarros', 'Camiões'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Famoso pelos seus autocarros Marcopolo G8 e camiões de alta fidelidade para ETS2.' },
+        { name: 'LM Mods', url: 'https://lucasmorais.gumroad.com/', specialty: ['Camiões'], platform: 'Gumroad', price: '$$', region: 'Brasil', note: 'Especialista em camiões Scania brasileiros, oferecendo modelos detalhados para ETS2.' },
+        { name: 'RC Mod\'s', url: 'https://rcmods.com.br/', specialty: ['Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Foco em reboques graneleiros e cargas brasileiras para ETS2 e ATS.' },
+        { name: 'Mapa Eldorado PRO', url: 'https://mapaeldorado.com.br/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Mapa de alta qualidade do estado de São Paulo para ETS2. Inclui conteúdo bónus.' },
+        { name: 'Clube Rotas', url: 'https://cluberotas.com/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Hub para os mapas massivos RBR, EAA e o mais recente Rotas Brasil para ETS2.' },
+        { name: 'Mapa Bahia', url: 'https://www.facebook.com/MapaBahiaETS2/', specialty: ['Mapas'], platform: 'Venda Direta', price: '$$', region: 'Brasil', note: 'Conhecido pela sua escala 1:1 para máximo realismo de distância no ETS2.' }
+    ];
+
+    const consumerGuide = [
+        { title: 'Verificação de Reputação', content: 'Antes de comprar, pesquise! Procure por análises em vídeo no YouTube e discussões em comunidades como o Reddit (r/trucksim). A reputação de um modder é o seu ativo mais valioso e o seu melhor indicador de qualidade.' },
+        { title: 'Cuidado com a Pirataria', content: 'A regra de ouro: se um mod pago está a ser oferecido de graça, é quase certamente uma versão roubada. Além de prejudicar o criador, ficheiros piratas podem estar desatualizados, conter bugs ou até mesmo malware. Compre sempre da fonte oficial.' },
+        { title: 'Gestão de Mods e Ordem de Carregamento', content: 'A utilização de múltiplos mods, especialmente mapas, exige uma gestão cuidadosa da ordem de carregamento no gestor de mods do jogo. Uma ordem incorreta pode causar conflitos e crashes. Siga sempre as recomendações de carregamento fornecidas pelos criadores.' },
+        { title: 'Compatibilidade de Versões', content: 'Verifique sempre se o mod é compatível com a sua versão atual do ETS2. Modders reputados atualizam os seus produtos, mas a responsabilidade da verificação é sua. Comprar um mod incompatível é uma fonte comum de frustração.' }
+    ];
+
+    const grid = document.getElementById('mod-grid');
+    const filtersContainer = document.getElementById('filters');
+    let currentFilters = {
+        region: '*',
+        specialty: '*'
+    };
+
+    function renderCards(filteredModders) {
+        grid.innerHTML = '';
+        if (filteredModders.length === 0) {
+            grid.innerHTML = `<p class="col-span-full text-center text-slate-500">Nenhum mod encontrado com os filtros selecionados.</p>`;
+            return;
+        }
+        filteredModders.forEach(mod => {
+            const card = document.createElement('div');
+            card.className = 'acrylic-card rounded-lg shadow-lg overflow-hidden flex flex-col';
+            card.innerHTML = `
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold text-lg text-white">${mod.name}</h4>
+                        <span class="text-xs font-semibold text-orange-300 bg-slate-700/50 px-3 py-1 rounded-full border border-slate-600">${mod.price}</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-3">${mod.platform}</p>
+                    <p class="text-slate-300 text-sm mb-4 flex-grow">${mod.note}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${mod.specialty.map(s => `<span class="text-xs bg-slate-700 text-orange-400 px-2 py-1 rounded-full font-medium">${s}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-900/50 mt-auto">
+                    <a href="${mod.url}" target="_blank" rel="noopener noreferrer" class="w-full text-center block bg-orange-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-orange-500 transition-colors duration-300">
+                        Visitar Loja →
+                    </a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function applyFilters() {
+        const filtered = modders.filter(mod => {
+            const regionMatch = currentFilters.region === '*' || mod.region === currentFilters.region;
+            const specialtyMatch = currentFilters.specialty === '*' || mod.specialty.includes(currentFilters.specialty);
+            return regionMatch && specialtyMatch;
+        });
+        renderCards(filtered);
+    }
+    
+    const filterButtons = filtersContainer.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        btn.className = 'filter-btn px-4 py-2 border border-slate-600 rounded-md text-slate-300 hover:bg-slate-700 hover:border-slate-500 transition-all duration-300';
+    });
+    
+    filtersContainer.addEventListener('click', e => {
+        if (e.target.classList.contains('filter-btn')) {
+            const btn = e.target;
+            const filterGroup = btn.parentElement.dataset.filterGroup;
+            const filterValue = btn.dataset.filter;
+
+            currentFilters[filterGroup] = filterValue;
+
+            btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-filter'));
+            btn.classList.add('active-filter');
+            
+            applyFilters();
+        }
+    });
+    
+    function createCharts() {
+        const specialtyCounts = modders.flatMap(m => m.specialty).reduce((acc, spec) => {
+            acc[spec] = (acc[spec] || 0) + 1;
+            return acc;
+        }, {});
+
+        const platformCounts = modders.reduce((acc, mod) => {
+            acc[mod.platform] = (acc[mod.platform] || 0) + 1;
+            return acc;
+        }, {});
+
+        const chartColors = ['#f97316', '#ea580c', '#c2410c', '#9a3412', '#7c2d12', '#431407'];
+        
+        Chart.defaults.color = '#94a3b8'; // slate-400
+        Chart.defaults.borderColor = '#334155'; // slate-700
+
+        new Chart(document.getElementById('specialtyChart'), {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(specialtyCounts),
+                datasets: [{
+                    data: Object.values(specialtyCounts),
+                    backgroundColor: chartColors,
+                    borderColor: 'rgba(15, 23, 42, 0.7)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { color: '#d1d5db' } } }
+            }
+        });
+
+        new Chart(document.getElementById('platformChart'), {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(platformCounts),
+                datasets: [{
+                    data: Object.values(platformCounts),
+                    backgroundColor: chartColors,
+                    borderColor: 'rgba(15, 23, 42, 0.7)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { color: '#d1d5db' } } }
+            }
+        });
+    }
+
+    function createAccordion() {
+        const container = document.getElementById('accordion-container');
+        consumerGuide.forEach((item, index) => {
+            const accordionItem = document.createElement('div');
+            accordionItem.className = 'border border-slate-700/50 rounded-lg overflow-hidden';
+            accordionItem.innerHTML = `
+                <button class="accordion-button-style w-full text-left p-5 flex justify-between items-center font-semibold text-white hover:bg-slate-700 transition-colors focus:outline-none">
+                    <span>${item.title}</span>
+                    <span class="accordion-icon transform transition-transform text-orange-400">▼</span>
+                </button>
+                <div class="accordion-content-style max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="p-5 pt-2 text-slate-300">${item.content}</p>
+                </div>
+            `;
+            container.appendChild(accordionItem);
+        });
+
+        container.addEventListener('click', e => {
+            const button = e.target.closest('.accordion-button-style');
+            if (button) {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.accordion-icon');
+                
+                const isOpening = !(content.style.maxHeight && content.style.maxHeight !== '0px');
+
+                document.querySelectorAll('.accordion-content-style').forEach(c => c.style.maxHeight = '0px');
+                document.querySelectorAll('.accordion-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+                
+                if (isOpening) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+        });
+    }
+
+    function setupMobileMenu() {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    }
+    
+    renderCards(modders);
+    createCharts();
+    createAccordion();
+    setupMobileMenu();
+    document.querySelectorAll('.filter-btn[data-filter="*"]').forEach(btn => btn.classList.add('active-filter'));
+});
+</script>
+</body>
+</html>
