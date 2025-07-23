@@ -425,10 +425,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    function setupSuggestionForm() {
+        const form = document.getElementById('suggestion-form');
+        const successMessage = document.getElementById('form-success-message');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                successMessage.classList.remove('hidden');
+                form.reset();
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 4000);
+            });
+        }
+    }
+    
     renderCards(modders);
     createCharts();
     createAccordion();
     setupMobileMenu();
+    setupSuggestionForm();
     document.querySelectorAll('.filter-btn[data-filter="*"]').forEach(btn => btn.classList.add('active-filter'));
 });
 </script>
