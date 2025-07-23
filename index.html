@@ -176,7 +176,7 @@
                 <p class="text-slate-400 max-w-2xl mx-auto">Ajude a manter o diretório atualizado. Envie o link do modder/criador que você gostaria de ver na lista.</p>
             </div>
             <div class="max-w-2xl mx-auto p-8 acrylic-card rounded-lg">
-                <form id="suggestion-form">
+                <form id="suggestion-form" name="sugestoes" data-netlify="true">
                     <div class="flex flex-col sm:flex-row gap-4">
                         <input type="url" id="mod-link-input" required placeholder="https://link-do-modder.com" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all">
                         <button type="submit" class="bg-orange-600 text-white font-semibold py-3 px-6 rounded-md hover:bg-orange-500 transition-colors duration-300 flex-shrink-0">Enviar Sugestão</button>
@@ -430,7 +430,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const successMessage = document.getElementById('form-success-message');
         if (form) {
             form.addEventListener('submit', (e) => {
-                e.preventDefault();
                 successMessage.classList.remove('hidden');
                 form.reset();
                 setTimeout(() => {
