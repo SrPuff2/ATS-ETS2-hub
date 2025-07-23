@@ -22,7 +22,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: url('https://images.unsplash.com/photo-1588448229417-4395595a4a84?q=80&w=2071&auto=format&fit=crop');
+            background-image: url('https://images.unsplash.com/photo-1473445730015-841f29a9490b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -100,7 +100,7 @@
                 O Universo de Mods <span class="text-orange-500 text-glow">Premium</span>
             </h2>
             <p class="max-w-3xl mx-auto text-lg text-slate-400">
-                Seu portal definitivo para mods pagos de ETS2 & ATS. Navegue, descubra e conecte-se com os criadores de conteúdo mais renomados da comunidade.
+                Seu portal definitivo para mods pagos e gratuitos de ETS2 & ATS. Navegue, descubra e conecte-se com os criadores de conteúdo mais renomados da comunidade.
             </p>
         </section>
 
@@ -123,7 +123,7 @@
                     <h4 class="font-semibold mb-3 text-white">Especialidade:</h4>
                     <div class="flex flex-wrap gap-3" data-filter-group="specialty">
                         <button data-filter="*" class="filter-btn active-filter">Todas</button>
-                        <button data-filter="Camiões" class="filter-btn">Camiões</button>
+                        <button data-filter="Caminhões" class="filter-btn">Caminhões</button>
                         <button data-filter="Reboques" class="filter-btn">Reboques</button>
                         <button data-filter="Autocarros" class="filter-btn">Autocarros</button>
                         <button data-filter="Mapas" class="filter-btn">Mapas</button>
@@ -183,31 +183,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const modders = [
-        { name: 'Jon Ruda', url: 'https://byjonruda.com/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$$', region: 'Internacional', note: 'Reputação de topo; foco em modelos americanos (ATS) e europeus (ETS2) de alta fidelidade.' },
-        { name: 'RTA-Mods', url: 'https://rta-mods.net/', specialty: ['Camiões'], platform: 'Loja Própria', price: '$$$', region: 'Internacional', note: 'Muito conceituado; foco em camiões australianos e americanos para ATS/ETS2.' },
+        { name: 'Jon Ruda', url: 'https://byjonruda.com/', specialty: ['Caminhões', 'Reboques'], platform: 'Loja Própria', price: '$$$', region: 'Internacional', note: 'Reputação de topo; foco em modelos americanos (ATS) e europeus (ETS2) de alta fidelidade.' },
+        { name: 'RTA-Mods', url: 'https://rta-mods.net/', specialty: ['Caminhões'], platform: 'Loja Própria', price: '$$$', region: 'Internacional', note: 'Muito conceituado; foco em caminhões australianos e americanos para ATS/ETS2.' },
         { name: 'PingaMods', url: 'https://pingamods.com/', specialty: ['Reboques'], platform: 'Loja Própria', price: '$$', region: 'Internacional', note: 'Excelente qualidade; muitos reboques gratuitos e pagos para ETS2.' },
-        { name: 'Sanax', url: 'https://sanax.gumroad.com/', specialty: ['Camiões'], platform: 'Gumroad', price: '$$', region: 'Internacional', note: 'Famoso pelo aclamado mod Volvo FH 2022 para ETS2.' },
-        { name: 'Virtual Service', url: 'https://virtualservice.gumroad.com/', specialty: ['Camiões', 'Reboques', 'Acessórios'], platform: 'Gumroad', price: '$$$', region: 'Internacional', note: 'Loja muito prolífica com um vasto catálogo de produtos para ETS2.' },
+        { name: 'Sanax', url: 'https://sanax.gumroad.com/', specialty: ['Caminhões'], platform: 'Gumroad', price: '$$', region: 'Internacional', note: 'Famoso pelo aclamado mod Volvo FH 2022 para ETS2.' },
+        { name: 'Virtual Service', url: 'https://virtualservice.gumroad.com/', specialty: ['Caminhões', 'Reboques', 'Acessórios'], platform: 'Gumroad', price: '$$$', region: 'Internacional', note: 'Loja muito prolífica com um vasto catálogo de produtos para ETS2.' },
         { name: 'ProMods', url: 'https://www.promods.net/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$', region: 'Internacional', note: 'Essencial. Expansão massiva para ETS2 e ATS. Doação de ~1€ para download rápido.' },
         { name: 'RoExtended', url: 'https://roextended.ro/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Internacional', note: 'Foco na Roménia e Leste Europeu para ETS2. Modelo com versão gratuita e premium.' },
         { name: 'Zeemods', url: 'https://zeemods.com/', specialty: ['Som'], platform: 'Loja Própria', price: '$', region: 'Internacional', note: 'Considerado o melhor para sons de motor para ETS2/ATS. Oferece o ZAF para imersão extra.' },
         { name: 'Max2712 Sound Design', url: 'https://max2712.gumroad.com/', specialty: ['Som'], platform: 'Gumroad', price: '$', region: 'Internacional', note: 'Alternativa de alta qualidade à Zeemods, com preços acessíveis para ETS2.' },
         { name: 'Jasper\'s Modding', url: 'https://jaspermodding.com/', specialty: ['Acessórios'], platform: 'Sellfy', price: '$', region: 'Internacional', note: 'Conhecido pelo seu "Wheels Pack" de alta qualidade para ETS2.' },
-        { name: 'L.W.J Modding', url: 'https://lwjcod.gumroad.com/', specialty: ['Acessórios'], platform: 'Gumroad', price: '$', region: 'Internacional', note: 'Especializado em peças de tuning para camiões Scania RJL no ETS2.' },
+        { name: 'L.W.J Modding', url: 'https://lwjcod.gumroad.com/', specialty: ['Acessórios'], platform: 'Gumroad', price: '$', region: 'Internacional', note: 'Especializado em peças de tuning para caminhões Scania RJL no ETS2.' },
         { name: 'KJDesign', url: 'https://kjdesign.gumroad.com/', specialty: ['Acessórios'], platform: 'Gumroad', price: '$', region: 'Internacional', note: 'Foco em iluminação (barras de LED, lightboxes) e bullbars para ETS2.' },
-        { name: 'Frank Peru', url: 'https://www.facebook.com/FrankPeru.Oficial/', specialty: ['Camiões'], platform: 'Venda Direta', price: '$$', region: 'Internacional', note: 'Modder respeitado, conhecido por seus camiões Kenworth e Peterbilt para ETS2 e ATS.' },
-        { name: 'Sisl\'s Mega Pack', url: 'https://www.patreon.com/sisl', specialty: ['Acessórios'], platform: 'Patreon / Workshop', price: '$', region: 'Internacional', note: 'O pacote de acessórios de cabine mais essencial. O Patreon oferece mais conteúdo.' },
-        { name: 'Modwork', url: 'https://www.modwork.com.br/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Vasta seleção de camiões brasileiros icónicos para ETS2.' },
-        { name: 'Shop Pisc', url: 'https://shoppisc.com.br/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Oferece combos com desconto e mods com funcionalidades imersivas para ETS2.' },
+        { name: 'Frank Peru', url: 'https://www.facebook.com/profile.php?id=100083408832140', specialty: ['Caminhões'], platform: 'Venda Direta', price: '$$', region: 'Internacional', note: 'Modder respeitado, conhecido por seus caminhões Kenworth e Peterbilt para ETS2 e ATS.' },
+        { name: 'Modwork', url: 'https://www.modwork.com.br/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Vasta seleção de caminhões brasileiros iconicos para ETS2.' },
+        { name: 'Shop Pisc', url: 'https://shoppisc.com/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Oferece combos com desconto e mods com funcionalidades imersivas para ETS2.' },
         { name: 'ModShop', url: 'https://modshop.com.br/', specialty: ['Autocarros'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Principal destino para mods de autocarros brasileiros (Marcopolo, etc.) para ETS2.' },
-        { name: 'Fabio Contier', url: 'https://fabiocontier.com.br/', specialty: ['Autocarros'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Modder individual de renome, especializado em autocarros de alta qualidade para ETS2.' },
-        { name: 'SouzaSG', url: 'https://souzasg.com.br/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Mods de alta qualidade para ETS2 e ATS, com foco em veículos brasileiros como o VW Meteor.' },
-        { name: 'Quality3D', url: 'https://quality3d.com.br/', specialty: ['Autocarros', 'Camiões'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Famoso pelos seus autocarros Marcopolo G8 e camiões de alta fidelidade para ETS2.' },
-        { name: 'LM Mods', url: 'https://lucasmorais.gumroad.com/', specialty: ['Camiões'], platform: 'Gumroad', price: '$$', region: 'Brasil', note: 'Especialista em camiões Scania brasileiros, oferecendo modelos detalhados para ETS2.' },
-        { name: 'RC Mod\'s', url: 'https://rcmods.com.br/', specialty: ['Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Foco em reboques graneleiros e cargas brasileiras para ETS2 e ATS.' },
-        { name: 'Mapa Eldorado PRO', url: 'https://mapaeldorado.com.br/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Mapa de alta qualidade do estado de São Paulo para ETS2. Inclui conteúdo bónus.' },
-        { name: 'Clube Rotas', url: 'https://cluberotas.com/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Hub para os mapas massivos RBR, EAA e o mais recente Rotas Brasil para ETS2.' },
-        { name: 'Mapa Bahia', url: 'https://www.facebook.com/MapaBahiaETS2/', specialty: ['Mapas'], platform: 'Venda Direta', price: '$$', region: 'Brasil', note: 'Conhecido pela sua escala 1:1 para máximo realismo de distância no ETS2.' }
+        { name: 'Fabio Contier', url: 'https://fabiocontier.com/', specialty: ['Autocarros'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Modder individual de renome, especializado em autocarros de alta qualidade para ETS2.' },
+        { name: 'Quality3D', url: 'https://quality3d.com.br/', specialty: ['Autocarros', 'Camiões'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Famoso pelos seus autocarros Marcopolo G8 e caminhões de alta fidelidade para ETS2.' },
+        { name: 'Romario Cardoso', url: 'https://rcmod.com.br/', specialty: ['Caminhões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Foco em reboques graneleiros e cargas brasileiras para ETS2 e ATS.' },
+        { name: 'Mapa Eldorado PRO', url: 'https://mapaeldorado.com.br/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Mapa de alta qualidade do estado de São Paulo, Paraná e Santa Catarina para ETS2. Inclui conteúdo bónus.' },
+        { name: 'Clube Rotas', url: 'https://cluberotas.com/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Hub para os mapas massivos, EAA e o mais falado Rotas Brasil para ETS2.' },
+        { name: 'Mapa Bahia', url: 'https://www.facebook.com/MapaBahiaETS2/', specialty: ['Mapas'], platform: 'Venda Direta', price: '$$', region: 'Brasil', note: 'Conhecido pela sua escala 1:1 para máximo realismo de distância no ETS2.' },
+        { name: 'Mapa RBR', url: 'https://maparbr.com.br/', specialty: ['Mapas', 'Caminhões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Conhecido por seu realismo nas estradas Brasileiras nos trechos rurais e rodoviários com escala 1:1 e escala SCS.' },
     ];
 
     const consumerGuide = [
