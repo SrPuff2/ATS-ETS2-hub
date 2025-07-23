@@ -125,7 +125,7 @@
                         <button data-filter="*" class="filter-btn active-filter">Todas</button>
                         <button data-filter="Caminhões" class="filter-btn">Caminhões</button>
                         <button data-filter="Reboques" class="filter-btn">Reboques</button>
-                        <button data-filter="Autocarros" class="filter-btn">Autocarros</button>
+                        <button data-filter="Onibus" class="filter-btn">Autocarros</button>
                         <button data-filter="Mapas" class="filter-btn">Mapas</button>
                         <button data-filter="Som" class="filter-btn">Som</button>
                         <button data-filter="Acessórios" class="filter-btn">Acessórios</button>
@@ -198,14 +198,26 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Frank Peru', url: 'https://www.facebook.com/profile.php?id=100083408832140', specialty: ['Caminhões'], platform: 'Venda Direta', price: '$$', region: 'Internacional', note: 'Modder respeitado, conhecido por seus caminhões Kenworth e Peterbilt para ETS2 e ATS.' },
         { name: 'Modwork', url: 'https://www.modwork.com.br/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Vasta seleção de caminhões brasileiros iconicos para ETS2.' },
         { name: 'Shop Pisc', url: 'https://shoppisc.com/', specialty: ['Camiões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Oferece combos com desconto e mods com funcionalidades imersivas para ETS2.' },
-        { name: 'ModShop', url: 'https://modshop.com.br/', specialty: ['Autocarros'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Principal destino para mods de autocarros brasileiros (Marcopolo, etc.) para ETS2.' },
-        { name: 'Fabio Contier', url: 'https://fabiocontier.com/', specialty: ['Autocarros'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Modder individual de renome, especializado em autocarros de alta qualidade para ETS2.' },
-        { name: 'Quality3D', url: 'https://quality3d.com.br/', specialty: ['Autocarros', 'Camiões'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Famoso pelos seus autocarros Marcopolo G8 e caminhões de alta fidelidade para ETS2.' },
+        { name: 'ModShop', url: 'https://modshop.com.br/', specialty: ['Onibus'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Principal destino para mods de autocarros brasileiros (Marcopolo, etc.) para ETS2.' },
+        { name: 'Fabio Contier', url: 'https://fabiocontier.com/', specialty: ['Onibus'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Modder individual de renome, especializado em autocarros de alta qualidade para ETS2.' },
+        { name: 'Quality3D', url: 'https://quality3d.com.br/', specialty: ['Camiões'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Famoso pelos seus autocarros Marcopolo G8 e caminhões de alta fidelidade para ETS2.' },
         { name: 'Romario Cardoso', url: 'https://rcmod.com.br/', specialty: ['Caminhões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Foco em reboques graneleiros e cargas brasileiras para ETS2 e ATS.' },
         { name: 'Mapa Eldorado PRO', url: 'https://mapaeldorado.com.br/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Mapa de alta qualidade do estado de São Paulo, Paraná e Santa Catarina para ETS2. Inclui conteúdo bónus.' },
         { name: 'Clube Rotas', url: 'https://cluberotas.com/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Hub para os mapas massivos, EAA e o mais falado Rotas Brasil para ETS2.' },
         { name: 'Mapa Bahia', url: 'https://www.facebook.com/MapaBahiaETS2/', specialty: ['Mapas'], platform: 'Venda Direta', price: '$$', region: 'Brasil', note: 'Conhecido pela sua escala 1:1 para máximo realismo de distância no ETS2.' },
         { name: 'Mapa RBR', url: 'https://maparbr.com.br/', specialty: ['Mapas', 'Caminhões', 'Reboques'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Conhecido por seu realismo nas estradas Brasileiras nos trechos rurais e rodoviários com escala 1:1 e escala SCS.' },
+        { name: 'DF Models ETS2', url: 'https://dfmodelsets2.wixsite.com/meusite/shop?page=2', specialty: ['Onibus'], platform: 'Wix', price: '$$', region: 'Brasil', note: 'Conhecido por sua qualidade em seus mods de onibus.' },
+        { name: 'CD3DSHOP', url: 'https://br.cd3dshop.com/', specialty: ['Onibus'], platform: 'Loja Própria', price: '$$', region: 'Internacional', note: 'Onibus de alta qualidade com preços acessíveis no mercado de mods.' },
+        { name: 'ST Mods', url: 'https://stmods.com.br/', specialty: ['Onibus'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Mods de Onibus e Guincho com reboque com boa qualidade e preços acessíveis.' },
+        { name: 'Project Japan', url: 'https://ets2.jp/en/', specialty: ['Mapas'], platform: 'Loja Própria', price: "$", region: 'Internacional', note: 'Um mapa mod com cidades do Japão em andamento.' },
+        { name: 'Norman Mods', url: 'https://www.normanmods.com.br/loja', specialty: ['Onibus'], platform: 'Loja Própria', price: '$', region: 'Brasil', note: 'Este site contém vários mods de onibus e acessórios 100% gratuitos de alta qualidade.' },
+        { name: 'B4D Brasil', url: 'https://www.b4dbr.com/', specialty: ['Onibus'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Grande variedade de onibus de boa qualidade, incluindo um Marco Polo g7 gratuito.' },
+        { name: 'ImperaMods', url: 'https://imperamods.wixsite.com/imperamods', specialty: ['Onibus'], platform: 'Wix', price: '$', region: 'Brasil', note: 'Uma boa variedade de mod de onibus antigos.' },
+        { name: 'Altec Mod', url: 'https://altecmod.com/', specialty: ['Onibus'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Esse site reune poucos mods de Onibus, mas todos de boa qualidade a um preço justo e favorável.' },
+        { name: 'Rafa Sound', url: 'https://rafasoundengine.com.br/', specialty: ['Som'], platform: 'Loja Própria', price: '$', region: 'Brasil', note: 'O site possui uma boa variedade de Sons de altissima qualidade para Onibus e Caminhões a um preço pequeno.' },
+        { name: 'Mapa Minas ETS', url: 'https://mapaminasets2.com.br/', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'O Mapa foi construido a partir do estado de Minas Gerais, Brasil, com enfase em fazendas e rotas desafiadoras com um grande realismo.' },
+        { name: 'RC SHOP', url: 'https://rcteam.com.br/rcshop/', specialty: ['Caminhões', 'Reboques', 'Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'Possui uma boa diversidade de mods, todos com ótima qualidade. Vale a pena testar o mapa RC também.' },
+        { name: 'Mapa ORB', url: 'https://mapaorb.wixsite.com/mapaorb', specialty: ['Mapas'], platform: 'Loja Própria', price: '$$', region: 'Brasil', note: 'O mapa foi construido com exclusividade para a comunidade de Onibus.' }
     ];
 
     const consumerGuide = [
